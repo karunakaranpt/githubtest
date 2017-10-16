@@ -69,7 +69,7 @@ echo Using funcpack to optimize cold start
 
 :: 1. Copy to local storage
 echo Copying repository files to local storage
-xcopy "%DEPLOYMENT_SOURCE%" "%DEPLOYMENT_TEMP%" /seyiq
+xcopy "%DEPLOYMENT_SOURCE%\sample" "%DEPLOYMENT_TEMP%" /seyiq
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 2. Restore npm
