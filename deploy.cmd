@@ -48,7 +48,7 @@ IF NOT DEFINED KUDU_SYNC_CMD (
   SET KUDU_SYNC_CMD=%appdata%\npm\kuduSync.cmd
 )
 
-DEPLOYMENT_SOURCE_PATH="%DEPLOYMENT_SOURCE%\sample"
+SET DEPLOYMENT_SOURCE_PATH="%DEPLOYMENT_SOURCE%\sample"
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: Deployment
