@@ -48,6 +48,8 @@ IF NOT DEFINED KUDU_SYNC_CMD (
   SET KUDU_SYNC_CMD=%appdata%\npm\kuduSync.cmd
 )
 
+DEPLOYMENT_SOURCE_PATH="%DEPLOYMENT_SOURCE%\sample"
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: Deployment
 :: ----------
@@ -69,7 +71,7 @@ echo Using funcpack to optimize cold start
 
 :: 1. Copy to local storage
 echo Copying repository files to local storage
-xcopy "%DEPLOYMENT_SOURCE%\sample" "%DEPLOYMENT_TEMP%" /seyiq
+xcopy "%DEPLOYMENT_SOURCE_PATH%" "%DEPLOYMENT_TEMP%" /seyiq
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 2. Restore npm
@@ -95,7 +97,7 @@ echo Not using funcpack because SCM_USE_FUNCPACK is not set to 1
 
 :: 1. KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
-  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%\sample" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
+  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE_PATH%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
