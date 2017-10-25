@@ -1,5 +1,5 @@
 
-echo "hello"
+echo "hello-----"
 
 result=true
 if [ $result ]; then
