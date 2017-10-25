@@ -7,3 +7,5 @@ if [ $result ]; then
 else
   echo "failure"
 fi
+
+echo "end"
